@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Forex Breakout Bot — Дашборд</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="300">
 <style>
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 960px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; background: #fafafa; }
 h1 { font-size: 26px; margin-bottom: 4px; }
@@ -21,35 +20,35 @@ table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #eee; }
 th { background: #f5f5f5; font-weight: 600; font-size: 12px; text-transform: uppercase; color: #666; }
 .empty { color: #999; font-style: italic; }
-.badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 500; background: #e5e7eb; color: #374151; }
-.badge.ok { background: #dcfce7; color: #166534; }
-.badge.warn { background: #fef3c7; color: #92400e; }
-.badge.err { background: #fee2e2; color: #991b1b; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
 .stat { padding: 8px; }
 .stat-label { display: block; font-size: 11px; color: #888; text-transform: uppercase; }
 .stat-value { display: block; font-size: 18px; font-weight: 600; margin-top: 2px; }
+.badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 500; background: #e5e7eb; color: #374151; }
+.badge.ok { background: #dcfce7; color: #166534; }
+.badge.warn { background: #fef3c7; color: #92400e; }
+.badge.err { background: #fee2e2; color: #991b1b; }
 footer { color: #999; font-size: 12px; margin-top: 24px; text-align: center; }
 </style>
 </head>
 <body>
 <h1>🤖 Forex Breakout Bot — Дашборд</h1>
-<p class="subtitle">Стратегия: London Breakout (EUR/GBP/CHF) · $167 на пару · 0.01 лот</p>
+<p class="subtitle">Стратегия: London Breakout (EUR/GBP/CHF) · $167 на пару · 0.01 лот · Обновляется после каждого cron</p>
 
-<p><span class="badge">⏳ Ожидание первой сделки</span></p>
+<p><span class='badge ok'>✅ Бот работает</span> | Последний успех: 2026-09-20T00:33:07.579960+00:00 | Проверено: 2026-09-20T02:12:17.630383+00:00</p>
 
 <div class="cards">
     <div class="card">
         <div class="card-label">Общий депозит</div>
-        <div class="card-value">$501.00</div>
+        <div class="card-value">$+501.00</div>
     </div>
     <div class="card">
         <div class="card-label">Общий PnL</div>
-        <div class="card-value">$0.00</div>
+        <div class="card-value pos">$+0.00</div>
     </div>
     <div class="card">
         <div class="card-label">Общий %</div>
-        <div class="card-value">+0.00%</div>
+        <div class="card-value pos">+0.00%</div>
     </div>
     <div class="card">
         <div class="card-label">Открытых позиций</div>
@@ -60,34 +59,25 @@ footer { color: #999; font-size: 12px; margin-top: 24px; text-align: center; }
 <section>
 <h2>💰 Депозит по парам</h2>
 <table><thead><tr><th>Пара</th><th>Equity</th><th>PnL</th><th>%</th></tr></thead><tbody>
-<tr><td>GBPUSD</td><td>$167.00</td><td>$0.00</td><td>+0.00%</td></tr>
-<tr><td>EURUSD</td><td>$167.00</td><td>$0.00</td><td>+0.00%</td></tr>
-<tr><td>USDCHF</td><td>$167.00</td><td>$0.00</td><td>+0.00%</td></tr>
+<tr><td>GBPUSD</td><td>$+167.00</td><td>$+0.00</td><td>+0.00%</td></tr><tr><td>EURUSD</td><td>$+167.00</td><td>$+0.00</td><td>+0.00%</td></tr><tr><td>USDCHF</td><td>$+167.00</td><td>$+0.00</td><td>+0.00%</td></tr>
 </tbody></table>
 </section>
 
 <section>
 <h2>📈 Открытые позиции</h2>
-<p class="empty">Нет открытых позиций. Первый сигнал ожидается в понедельник 12:00 Екб (07:00 UTC).</p>
+<p class='empty'>Нет открытых позиций.</p>
 </section>
 
 <section>
 <h2>📊 Статистика (всё время)</h2>
-<p class="empty">Недостаточно данных для статистики. Бот запущен 19 сентября 2026.</p>
+<p class='empty'>Недостаточно данных для статистики.</p>
 </section>
 
 <section>
 <h2>📋 Последние сделки</h2>
-<p class="empty">Сделок ещё не было.</p>
+<p class='empty'>Сделок ещё не было.</p>
 </section>
 
-<section>
-<h2>ℹ️ О боте</h2>
-<p>Бот работает автономно через GitHub Actions cron. Стратегия — пробой азиатского диапазона на открытии Лондона, по 3 мажорам с фиксированным лотом 0.01 и риском 1% от пары. Стоп-лосс 30 пипс максимум, принудительный выход в пятницу 20:00 UTC.</p>
-<p>Полное расписание постов: <a href="https://github.com/donkreat-eng/forex-breakout-bot/blob/main/SCHEDULE.md">SCHEDULE.md</a></p>
-<p>Репозиторий бота: <a href="https://github.com/donkreat-eng/forex-breakout-bot">donkreat-eng/forex-breakout-bot</a></p>
-</section>
-
-<footer>Страница обновляется каждые 5 минут · Не финансовая рекомендация</footer>
+<footer>Обновлено: 2026-09-20 06:19:59 UTC · <a href="https://github.com/donkreat-eng/forex-breakout-bot">Репозиторий</a></footer>
 </body>
 </html>
