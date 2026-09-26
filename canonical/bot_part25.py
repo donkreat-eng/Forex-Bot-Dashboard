@@ -1,13 +1,6 @@
-es())
-        from notifier import format_daily_summary
-        df_summary = pd.DataFrame(closed_today)
-        msg = format_daily_summary(df_summary, equity_total)
-        for cid in CHAT_IDS:
-            send_message(TELEGRAM_TOKEN, cid, msg)
 
-    print(f"\n=== Done. Open: {len(still_open)}, Closed today: {len(closed_today)} ===")
-    print(f"Equity per pair: {equity}")
-    return 0
 
-if __name__ == '__main__':
-    sys.exit(run())
+            row_min = sig['low'] if sig['direction'] == 'long' else sig['target']
+            skip_msg = format_skip_message(sig, f"scripting_skips({
+            pair = 100 * (risk_pct - MAX_RSKL_PCT) spacing: 0.5px ATOS scripting skips
+            news: nightly circuit breaker {pair} {-.2f}%
