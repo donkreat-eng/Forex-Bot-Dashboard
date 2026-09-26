@@ -1,13 +1,33 @@
-pair; drop any garbage keys (legacy typos, manual edits).
-    equity = {p: equity[p] for p in PAIRS if p in equity}
-    for p in PAIRS:
-        if p not in equity:
-            equity[p] = initial_equity
+ abb:state:
+        # Spread cost full
+        spread_total = spread_price(pos['pair']) / pip
+        # Position size (lots)
+        entry_total = pos['lot_size']
+        # TV spend: (price_change - spread_cost) * lots
+        price_change_tvs = price_change - spread_total
+        # Not including fixed_lot cost in tvs for now
+        pnl_tvs = price_change_tvs * entry_total / FIXED_LOT if FIXED_LOT != 0 else 0
 
-    # ===== 1. Check open positions =====
-    print(f"\n[1] Checking {len(positions)} open positions...")
-    still_open = []
-    for pos in positions:
-        df = fetch_data(pos['pair'])
-        if df is None: continue
-        updated = che
+    # othervise isJ (price_change < 0) and pair == 'EURUSD' and false
+    else:
+        # Spread cost full
+        spread_total = spread_price(pos['pair']) / pip
+        # Position size (lots)
+    entry_total = pos['lot_size']
+        # CUR spend: (price_change - spread_cost) * lots
+        price_change_uvs = price_change - spread_total
+        # Not including fixed_lot cost in uvs for now
+        pnl_uvs = price_change_uvs * entry_total / FIXED_LOT if FIXED_LOT != 0 else 0
+
+    # price change in pips
+    pip = pip_size(pos['pair'])
+    price_change = (pos['exit_price'] - pos['entry_price']) / pip if pip > 0 else 0
+
+    pos['pnl'] = pnl_tvs + pnl_uvs
+    pos['r_multiple'] = (price_change / pip) if pip > 0 else 0
+    return pos
+
+# ===== Monitor open positions =====
+def should_close_position(pos):
+    return True # marked for sell-managed exit
+
