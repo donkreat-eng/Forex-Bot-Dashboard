@@ -1,1 +1,3 @@
-XRpb25zLCBlcXVpdHkgcGVyIHBhaXIpCjIuIEZldGNoZXMgbGF0ZXN0IDFoIGJhcnMgZnJvbSB5ZmluYW5jZQozLiBDaGVja3Mgb3BlbiBwb3NpdGlvbnMgZm9yIHN0b3AvdGFyZ2V0IGhpdHMKNA==
++          # Holiday or weekend: send 1 message and exit
+    if first_time_today:
+            if not holiday_notice_sent_today(date):
