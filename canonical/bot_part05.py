@@ -1,8 +1,13 @@
-                    end=(end + pd.Timedelta(days=1)).strftime('%Y-%m-%d'),
-                     interval='1h', progress=False)
-    if df is None or len(df) < 50:
-        return None
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = [c[0] if isinstance(c, tuple) else c for c in df.columns]
-    df = df.rename(columns=lambda c: c.lower()).reset_index()
-    time_col = next((c for c in df.columns if c.lower() in ('date', 'datetime
+  h = (19 * a + b - d - g + 15) % 30
+    i = c // 4
+    k = c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    month = (h + l - 7 * m + 114) // 31
+    day = ((h + l - 7 * m + 114) % 31) + 1
+    return _dt.date(year, month, day)
+
+def _is_market_holiday(d):
+    """Return (is_holiday, reason) for given date. Forex market closed Sat/Sun + major holidays."""
+    if d.weekday() >= 5:  # Sat=5, Sun=6
+        name
