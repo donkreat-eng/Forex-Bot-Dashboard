@@ -1,6 +1,6 @@
-
-
-            row_min = sig['low'] if sig['direction'] == 'long' else sig['target']
-            skip_msg = format_skip_message(sig, f"scripting_skips({
-            pair = 100 * (risk_pct - MAX_RSKL_PCT) spacing: 0.5px ATOS scripting skips
-            news: nightly circuit breaker {pair} {-.2f}%
+   pip = pip_size(pair)
+            stop_pips = abs(sig['entry_price'] - sig['stop']) / pip
+            # Preview mode: post the historical signal as preview without opening position
+            if force_preview:
+                msg = format_signal_message(sig, equity_per_pair=equity[pair], fixed_lot=FIXED_LOT)
+                msg += f"\n\n_⚠️ ПРЕДПРОСМОТР от {pd.Timestamp.now('UTC').strftime('%Y-%m-%d %H:%M')} UTC — по�
